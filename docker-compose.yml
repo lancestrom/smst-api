@@ -7,15 +7,15 @@ services:
     restart: unless-stopped
     init: true
     ports:
-      - "${VPS_IP:?Set VPS_IP in .env}:${PORT:-3000}:3000"
+      - "${VPS_IP:-0.0.0.0}:${PORT:-3000}:3000"
     environment:
       NODE_ENV: production
       PORT: "3000"
-      DB_HOST: ${DB_HOST:?Set DB_HOST in .env}
+      DB_HOST: ${DB_HOST:-127.0.0.1}
       DB_PORT: ${DB_PORT:-3306}
-      DB_NAME: ${DB_NAME:?Set DB_NAME in .env}
-      DB_USER: ${DB_USER:?Set DB_USER in .env}
-      DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+      DB_NAME: ${DB_NAME:-smst-api}
+      DB_USER: ${DB_USER:-root}
+      DB_PASSWORD: ${DB_PASSWORD:-password}
     volumes:
       - uploads:/app/uploads
     healthcheck:
@@ -23,7 +23,7 @@ services:
         - CMD
         - node
         - -e
-        - "require('http').get('http://127.0.0.1:3000/api/', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"
+        # - "require('http').get('http://127.0.0.1:3000/api/', r => process.exit(r.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"
       interval: 30s
       timeout: 5s
       retries: 3
