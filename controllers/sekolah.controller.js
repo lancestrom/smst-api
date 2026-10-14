@@ -2,7 +2,7 @@ const db = require("../config/database");
 
 exports.getProfile = async (req, res, next) => {
   try {
-    const [rows] = await db.query("SELECT * FROM `profil-sekolah` LIMIT 1");
+    const [rows] = await db.query("SELECT * FROM `sekolah_profil` LIMIT 1");
 
     res.json({
       success: true,
@@ -15,7 +15,7 @@ exports.getProfile = async (req, res, next) => {
 
 exports.getVisi = async (req, res, next) => {
   try {
-    const [rows] = await db.query("SELECT * FROM `sekolah-visi` LIMIT 1");
+    const [rows] = await db.query("SELECT * FROM sekolah_visi LIMIT 1;");
 
     res.json({
       success: true,
@@ -28,7 +28,7 @@ exports.getVisi = async (req, res, next) => {
 
 exports.getMisi = async (req, res, next) => {
   try {
-    const [rows] = await db.query("SELECT * FROM `sekolah-misi`");
+    const [rows] = await db.query("SELECT * FROM `sekolah_misi`");
 
     res.json({
       success: true,
@@ -39,8 +39,19 @@ exports.getMisi = async (req, res, next) => {
   }
 };
 
-// exports.updateProfile = async (req, res, next) => {
-//   try {
+exports.getAlljurusan = async (req, res, next) => {
+  try {
+    const [rows] = await db.query(`SELECT * from sekolah_jurusan`);
+
+    res.json({
+      success: true,
+      data: rows,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 //     const {
 //       school_name,
 //       npsn,

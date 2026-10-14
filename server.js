@@ -24,6 +24,8 @@ const jurusanRoutes = require("./routes/jurusan.routes");
 
 // const postRoutes = require("./routes/post.routes");
 
+const bkkRoutes = require("./routes/bkk.routes");
+
 /*
 |--------------------------------------------------------------------------
 | Swagger
@@ -84,13 +86,7 @@ const { swaggerUi, swaggerDocument } = require("./docs/swagger");
 
 app.use("/api/sekolah", sekolahRoutes);
 
-// app.use("/api/hero", heroRoutes);
-
-app.use("/api/jurusan", jurusanRoutes);
-
-// app.use("/api/teachers", teacherRoutes);
-
-// app.use("/api/posts", postRoutes);
+app.use("/api/bkk", bkkRoutes);
 
 /*
 |--------------------------------------------------------------------------
@@ -113,7 +109,6 @@ app.use(errorHandler);
 | Server
 |--------------------------------------------------------------------------
 */
-
 
 const PORT = process.env.PORT || 3000;
 

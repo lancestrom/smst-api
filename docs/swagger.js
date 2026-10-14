@@ -9,40 +9,77 @@ const swaggerDocument = {
   paths: {
     "/api/sekolah": {
       get: {
-        summary: "Get school profile",
+        tags: ["Sekolah"],
+        summary: "Get Sekolah profile",
         responses: {
           200: {
-            description: "School profile",
+            description: "Sekolah profile",
           },
         },
       },
     },
     "/api/sekolah/visi": {
       get: {
-        summary: "Get school vision",
+        tags: ["Sekolah"],
+        summary: "Get Sekolah visi",
         responses: {
           200: {
-            description: "School vision",
+            description: "Sekolah visi",
           },
         },
       },
     },
     "/api/sekolah/misi": {
       get: {
-        summary: "Get school missions",
+        tags: ["Sekolah"],
+        summary: "Get Sekolah misi",
         responses: {
           200: {
-            description: "School missions",
+            description: "Sekolah misi",
           },
         },
       },
     },
-    "/api/jurusan": {
+    "/api/sekolah/jurusan": {
       get: {
-        summary: "Get all study programs",
+        tags: ["Sekolah"],
+        summary: "Get all Jurusan",
         responses: {
           200: {
-            description: "Study programs",
+            description: "Jurusan",
+          },
+        },
+      },
+    },
+    "/api/bkk/mitra": {
+      get: {
+        tags: ["BKK"],
+        summary: "Get all BKK partners",
+        responses: {
+          200: {
+            description: "BKK partners",
+          },
+        },
+      },
+    },
+    "/api/bkk/kegiatan": {
+      get: {
+        tags: ["BKK"],
+        summary: "Get all BKK kegiatan",
+        responses: {
+          200: {
+            description: "BKK kegiatan",
+          },
+        },
+      },
+    },
+    "/api/bkk/kegiatan/gambar": {
+      get: {
+        tags: ["BKK"],
+        summary: "Get all BKK kegiatan gambar",
+        responses: {
+          200: {
+            description: "BKK kegiatan gambar",
           },
         },
       },
