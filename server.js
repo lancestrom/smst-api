@@ -2,6 +2,8 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const os = require("os");
+const { execFileSync } = require("child_process");
 const errorHandler = require("./middleware/error");
 
 const app = express();
@@ -12,18 +14,7 @@ const app = express();
 |--------------------------------------------------------------------------
 */
 
-// const authRoutes = require("./routes/auth.routes");
-
 const sekolahRoutes = require("./routes/sekolah.routes");
-
-// const heroRoutes = require("./routes/hero.routes");
-
-const jurusanRoutes = require("./routes/jurusan.routes");
-
-// const teacherRoutes = require("./routes/teacher.routes");
-
-// const postRoutes = require("./routes/post.routes");
-
 const bkkRoutes = require("./routes/bkk.routes");
 
 /*
@@ -112,11 +103,44 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+const getWifiIPv4 = () => {
+  if (process.platform !== "darwin") {
+    return null;
+  }
 
-  console.log(
-    `Swagger:
-http://localhost:${PORT}/api-docs`,
-  );
+  try {
+    const hardwarePorts = execFileSync(
+      "networksetup",
+      ["-listallhardwareports"],
+      {
+        encoding: "utf8",
+      },
+    );
+    const wifiPort = hardwarePorts
+      .split(/(?=Hardware Port:)/)
+      .find((port) => /^Hardware Port:\s*(Wi-Fi|AirPort)\s*$/m.test(port));
+    const deviceName = wifiPort?.match(/^Device:\s*(\S+)\s*$/m)?.[1];
+
+    if (!deviceName) {
+      return null;
+    }
+
+    return os
+      .networkInterfaces()
+      [
+        deviceName
+      ]?.find((entry) => (entry.family === "IPv4" || entry.family === 4) && !entry.internal && !entry.address.startsWith("169.254."))
+      ?.address;
+  } catch (error) {
+    console.error("Gagal mendeteksi interface Wi-Fi:", error.message);
+    return null;
+  }
+};
+
+app.listen(PORT, "127.0.0.1", () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Swagger: http://localhost:${PORT}/api-docs`);
+
+  const wifiIPv4 = getWifiIPv4();
+  console.log(`Wi-Fi IP: ${wifiIPv4 || "Alamat IPv4 Wi-Fi tidak ditemukan"}`);
 });

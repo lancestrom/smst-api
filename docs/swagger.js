@@ -51,6 +51,18 @@ const swaggerDocument = {
         },
       },
     },
+    //BKK
+    "/api/bkk/profil_bkk": {
+      get: {
+        tags: ["BKK"],
+        summary: "Get Profil BKK",
+        responses: {
+          200: {
+            description: "BKK profil",
+          },
+        },
+      },
+    },
     "/api/bkk/mitra": {
       get: {
         tags: ["BKK"],
@@ -83,7 +95,7 @@ const swaggerDocument = {
           },
         },
       },
-    },
+    }
   },
 };
 

@@ -1,5 +1,18 @@
 const db = require("../config/database");
 
+exports.getProfilBKK = async (req, res, next) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM bkk_profil');
+
+    res.json({
+      success: true,
+      data: rows,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 exports.getAllmitra = async (req, res, next) => {
   try {
     const [rows] = await db.query(`SELECT * from  bkk_mitra_perusahaan`);

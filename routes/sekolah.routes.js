@@ -12,5 +12,4 @@ router.get("/misi", sekolahController.getMisi);
 
 router.get("/jurusan", sekolahController.getAlljurusan);
 
-
 module.exports = router;
