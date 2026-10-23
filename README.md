@@ -24,7 +24,7 @@ pm2 startup
 
 Jalankan perintah `sudo` yang dicetak oleh `pm2 startup` agar proses otomatis aktif kembali setelah VPS reboot.
 
-Aplikasi mendengarkan di `127.0.0.1:3005`. Gunakan reverse proxy seperti Nginx untuk menerima trafik publik dan meneruskannya ke alamat tersebut; jangan membuka port aplikasi ke internet secara langsung.
+Aplikasi mendengarkan di `0.0.0.0:3005` agar dapat dijangkau melalui jaringan. Swagger tersedia di `http://<IP-VPS>:3005/api-docs` jika port `3005` diizinkan oleh firewall VPS dan firewall jaringan. Untuk deployment produksi, sebaiknya gunakan reverse proxy seperti Nginx dengan HTTPS dan batasi akses langsung ke port aplikasi.
 
 ### Operasional
 

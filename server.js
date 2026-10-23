@@ -102,6 +102,7 @@ app.use(errorHandler);
 */
 
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || "0.0.0.0";
 
 const getWifiIPv4 = () => {
   if (process.platform !== "darwin") {
@@ -137,8 +138,8 @@ const getWifiIPv4 = () => {
   }
 };
 
-app.listen(PORT, "127.0.0.1", () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(PORT, HOST, () => {
+  console.log(`Server listening on ${HOST}:${PORT}`);
   console.log(`Swagger: http://localhost:${PORT}/api-docs`);
 
   const wifiIPv4 = getWifiIPv4();
