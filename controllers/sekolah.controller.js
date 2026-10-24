@@ -19,7 +19,7 @@ exports.getVisi = async (req, res, next) => {
 
     res.json({
       success: true,
-      data: rows[0] || null,
+      data: rows,
     });
   } catch (error) {
     next(error);
