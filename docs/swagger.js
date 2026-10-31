@@ -3,7 +3,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = {
   openapi: "3.0.3",
   info: {
-    title: "School Management API",
+    title: "	Sistem Manajemen Sekolah Terintegrasi",
     version: "1.0.0",
   },
   paths: {

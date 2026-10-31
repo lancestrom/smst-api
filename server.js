@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const os = require("os");
 const { execFileSync } = require("child_process");
-const errorHandler = require("./middleware/error");
+
 
 const app = express();
 
@@ -31,23 +31,16 @@ const { swaggerUi, swaggerDocument } = require("./docs/swagger");
 |--------------------------------------------------------------------------
 */
 
-// app.use(cors());
+app.use(cors());
 
-// app.use(express.json());
+app.use(express.json());
 
-// app.use(
-//   express.urlencoded({
-//     extended: true,
-//   }),
-// );
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+);
 
-/*
-|--------------------------------------------------------------------------
-| Static Upload
-|--------------------------------------------------------------------------
-*/
-
-// app.use("/uploads", express.static("uploads"));
 
 /*
 |--------------------------------------------------------------------------
@@ -55,17 +48,17 @@ const { swaggerUi, swaggerDocument } = require("./docs/swagger");
 |--------------------------------------------------------------------------
 */
 
-// app.get("/", (req, res) => {
-//   res.json({
-//     success: true,
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
 
-//     message: "School Management API",
+    message: "Sistem Manajemen Sekolah Terintegrasi",
 
-//     version: "1.0.0",
+    version: "1.0.0",
 
-//     documentation: "/api-docs",
-//   });
-// });
+    documentation: "/api-docs",
+  });
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -87,13 +80,7 @@ app.use("/api/bkk", bkkRoutes);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-/*
-|--------------------------------------------------------------------------
-| Error Handler
-|--------------------------------------------------------------------------
-*/
 
-app.use(errorHandler);
 
 /*
 |--------------------------------------------------------------------------
