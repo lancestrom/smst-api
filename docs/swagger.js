@@ -52,50 +52,50 @@ const swaggerDocument = {
       },
     },
     //BKK
-    "/api/bkk/profil_bkk": {
-      get: {
-        tags: ["BKK"],
-        summary: "Get Profil BKK",
-        responses: {
-          200: {
-            description: "BKK profil",
-          },
-        },
-      },
-    },
-    "/api/bkk/mitra": {
-      get: {
-        tags: ["BKK"],
-        summary: "Get all BKK partners",
-        responses: {
-          200: {
-            description: "BKK partners",
-          },
-        },
-      },
-    },
-    "/api/bkk/kegiatan": {
-      get: {
-        tags: ["BKK"],
-        summary: "Get all BKK kegiatan",
-        responses: {
-          200: {
-            description: "BKK kegiatan",
-          },
-        },
-      },
-    },
-    "/api/bkk/kegiatan/gambar": {
-      get: {
-        tags: ["BKK"],
-        summary: "Get all BKK kegiatan gambar",
-        responses: {
-          200: {
-            description: "BKK kegiatan gambar",
-          },
-        },
-      },
-    }
+    // "/api/bkk/profil_bkk": {
+    //   get: {
+    //     tags: ["BKK"],
+    //     summary: "Get Profil BKK",
+    //     responses: {
+    //       200: {
+    //         description: "BKK profil",
+    //       },
+    //     },
+    //   },
+    // },
+    // "/api/bkk/mitra": {
+    //   get: {
+    //     tags: ["BKK"],
+    //     summary: "Get all BKK partners",
+    //     responses: {
+    //       200: {
+    //         description: "BKK partners",
+    //       },
+    //     },
+    //   },
+    // },
+    // "/api/bkk/kegiatan": {
+    //   get: {
+    //     tags: ["BKK"],
+    //     summary: "Get all BKK kegiatan",
+    //     responses: {
+    //       200: {
+    //         description: "BKK kegiatan",
+    //       },
+    //     },
+    //   },
+    // },
+    // "/api/bkk/kegiatan/gambar": {
+    //   get: {
+    //     tags: ["BKK"],
+    //     summary: "Get all BKK kegiatan gambar",
+    //     responses: {
+    //       200: {
+    //         description: "BKK kegiatan gambar",
+    //       },
+    //     },
+    //   },
+    // }
   },
 };
 
